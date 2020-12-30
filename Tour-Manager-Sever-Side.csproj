@@ -5,5 +5,10 @@
     <RootNamespace>Tour_Manager_Sever_Side</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Filter\" />
+    <Folder Include="DataBase\" />
+  </ItemGroup>
+
 
 </Project>

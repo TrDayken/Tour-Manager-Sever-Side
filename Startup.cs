@@ -40,6 +40,9 @@ namespace Tour_Manager_Sever_Side
 
             app.UseRouting();
 
+            // called when [authentication] tag is declared
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
