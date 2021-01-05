@@ -8,12 +8,54 @@ namespace Tour_Manager_Sever_Side.Objects
     public class Hotel
     {
         #region Hotel's private property 
-        private int _id { get; set; }
+        private int id;
 
-        private string _hotelname { get; set; }
+        private string hotelname;
 
-        private float _price { get; set; }
+        private float price;
 
+        #endregion
+
+        #region get, set
+
+        public int ID
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                this.id = value; 
+            }
+        }
+
+        public string HotelName
+        {
+            get
+            {
+                return hotelname;
+            }
+
+            set
+            {
+                this.hotelname = value; 
+            }
+        }
+
+        public float Price
+        {
+            get
+            {
+                return price; 
+            }
+
+            set
+            {
+                this.price = value; 
+            }
+        }
         #endregion
 
         #region constructor and deconstructor
@@ -21,9 +63,9 @@ namespace Tour_Manager_Sever_Side.Objects
 
         public Hotel(int Id , string HotelName, float Price)
         {
-            this._id = Id;
-            this._hotelname = HotelName;
-            this._price = Price;
+            this.id = Id;
+            this.hotelname = HotelName;
+            this.price = Price;
         }
 
         #endregion
