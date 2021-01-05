@@ -8,7 +8,6 @@
   <ItemGroup>
     <Folder Include="Filter\" />
     <Folder Include="DataBase\" />
-    <Folder Include="Objects\location\" />
   </ItemGroup>
 
 
