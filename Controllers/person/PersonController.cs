@@ -11,6 +11,23 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
     [Route("api/[controller]")]
     public class PersonController : Controller
     {
+
+        #region Get method
+
+        #endregion
+
+        #region Post method
+
+        #endregion
+
+        #region Put method
+
+        #endregion
+
+        #region Delete method
+
+        #endregion
+
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()

@@ -11,8 +11,8 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
     [Route("api/[controller]")]
     public class AccountController : Controller
     {
-        // GET: api/<controller>
         #region Get method
+        // GET: api/<controller>
             
         //GET:: api/Account
         [HttpGet]
@@ -30,8 +30,8 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #endregion
 
-        // POST api/<controller>
         #region Post method
+        // POST api/<controller>
         [HttpPost]
         public void Post([FromBody]string value)
         {
@@ -39,8 +39,8 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #endregion
 
-        // PUT api/<controller>/5
         #region Put method
+        // PUT api/<controller>/5
         [HttpPut("{id}" , Name = "Update Specific Account" )]
         public void Put(int id, [FromBody]string value)
         {

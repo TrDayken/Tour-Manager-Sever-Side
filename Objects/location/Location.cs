@@ -42,7 +42,7 @@ namespace Tour_Manager_Sever_Side.Objects
 
         #region constructor
 
-        Location() { }
+        public Location() { }
 
         public Location(int id, string name, string info)
         {
