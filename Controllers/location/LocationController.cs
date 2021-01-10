@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Tour_Manager_Sever_Side.Objects;
+using Tour_Manager_Sever_Side.DataBase;
+using System.Data;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,14 +31,14 @@ namespace Tour_Manager_Sever_Side.Controllers
         [HttpGet]
         public IEnumerable<Location> Get()
         {
-            return locations;
+            return LocationData.Instance.GetAllLocation();
         }
 
         //GET api/location/5
         [HttpGet("{id}")]
         public Location Get(int id)
         {
-            return locations[id];
+            return LocationData.Instance.GetLocation(id);
         }
 
 
@@ -44,7 +46,7 @@ namespace Tour_Manager_Sever_Side.Controllers
         [HttpGet("id={id}")]
         public Location GetLocationName(int id)
         {
-            return locations[id];
+            return LocationData.Instance.GetLocation( id);
         }
 
         #endregion

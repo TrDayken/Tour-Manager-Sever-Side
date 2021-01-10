@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -51,6 +52,15 @@ namespace Tour_Manager_Sever_Side.Objects
             LocationName = name;
 
             LocationInfo = info;
+        }
+
+        public Location(DataRow row)
+        {
+            LocationId = row["ID_Dia_Diem"].GetHashCode();
+
+            LocationName = row["Ten_Dia_Diem"].ToString();
+
+            LocationInfo = row["Dac_Diem"].ToString();
         }
         #endregion
     }
