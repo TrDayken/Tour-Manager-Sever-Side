@@ -17,20 +17,6 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #region Get method
 
-        #endregion
-
-        #region Post method
-
-        #endregion
-
-        #region Put method
-
-        #endregion
-
-        #region Delete method
-
-        #endregion
-
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<Transfer> Get()
@@ -45,12 +31,21 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             return TransferData.Instance.GetTransfer(id);
         }
 
+        #endregion
+
+        #region Post method
+
+
         // POST api/<controller>
         [HttpPost]
         public void Post([FromBody] Transfer value)
         {
             TransferData.Instance.insertTransfer(value);
         }
+
+        #endregion
+
+        #region Put method
 
         // PUT api/<controller>/5
         [HttpPut]
@@ -59,11 +54,20 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             TransferData.Instance.updateTransfer(value);
         }
 
+        #endregion
+
+        #region Delete method
+
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             TransferData.Instance.deteleTransfer(id);
         }
+
+        #endregion
+
+
+
     }
 }

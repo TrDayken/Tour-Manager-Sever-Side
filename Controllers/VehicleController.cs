@@ -16,19 +16,6 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #region Get method
 
-        #endregion
-
-        #region Post method
-
-        #endregion
-
-        #region Put method
-
-        #endregion
-
-        #region Delete method
-
-        #endregion
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<Vehicle> Get()
@@ -42,6 +29,9 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             return VehicleData.Instance.GetVehicle(id);
         }
+        #endregion
+
+        #region Post method
 
         // POST api/<controller>
         [HttpPost]
@@ -50,6 +40,10 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             VehicleData.Instance.insertVehicle(value);
         }
 
+        #endregion
+
+        #region Put method
+
         // PUT api/<controller>/5
         [HttpPut]
         public void Put([FromBody] Vehicle value)
@@ -57,11 +51,25 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             VehicleData.Instance.updateVehicle(value);
         }
 
+        #endregion
+
+        #region Delete method
+
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             VehicleData.Instance.deteleVehicle(id);
         }
+
+        #endregion
+
+
+
+
+
+
+
+
     }
 }
