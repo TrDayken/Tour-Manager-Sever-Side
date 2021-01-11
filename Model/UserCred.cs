@@ -45,6 +45,8 @@ namespace Tour_Manager_Sever_Side.Model
         #endregion
 
         #region constructor
+        public UserCred()
+        { }
 
         public UserCred(string accountname, string password)
         {

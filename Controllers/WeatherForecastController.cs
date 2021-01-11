@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Tour_Manager_Sever_Side.Objects;
+using Tour_Manager_Sever_Side.DataBase;
 
 namespace Tour_Manager_Sever_Side.Controllers
 {

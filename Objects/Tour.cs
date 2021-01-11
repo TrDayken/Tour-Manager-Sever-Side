@@ -14,7 +14,7 @@ namespace Tour_Manager_Sever_Side.Objects
 
         private string tourname;
 
-        private float tourprice;
+        private double tourprice;
 
         private string tourinfo;
 
@@ -41,7 +41,7 @@ namespace Tour_Manager_Sever_Side.Objects
             set { this.tourname = value; }
         }
 
-        public float TourPrice
+        public double TourPrice
         {
             get { return tourprice; }
 

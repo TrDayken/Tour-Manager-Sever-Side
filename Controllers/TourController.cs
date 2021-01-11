@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Tour_Manager_Sever_Side.Objects;
+using Tour_Manager_Sever_Side.DataBase;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,9 +32,9 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Tour> Get()
         {
-            return new string[] { "value1", "value2" };
+            return TourData.Instance.GetAllTour();
         }
 
         // GET api/<controller>/5
