@@ -19,7 +19,7 @@ namespace Tour_Manager_Sever_Side.DataBase
         }
         private DataProvider() { }
 
-        private string connectionSTR =string.Format("Server=localhost;Port=5432;User Id=postgres;Password=2000;Database=quanlydulich;");
+        private string connectionSTR =string.Format("Server=localhost;Port=5432;User Id=postgres;Password=cuong28022000;Database=quanlydulich;");
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();

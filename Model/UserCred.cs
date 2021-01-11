@@ -7,8 +7,51 @@ namespace Tour_Manager_Sever_Side.Model
 {
     public class UserCred
     {
-        public string Username { get; set; }
+        #region private field
+        private string userName;
 
-        public string Password { get; set; }
+        private string password;
+
+        #endregion
+
+        #region get, set
+
+        public string UserName
+        {
+            get
+            {
+                return this.userName;
+            }
+
+            set
+            {
+                this.userName = value; 
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return this.password;
+            }
+
+            set
+            {
+                this.password = value; 
+            }
+        }
+
+        #endregion
+
+        #region constructor
+
+        public UserCred(string accountname, string password)
+        {
+            this.UserName = accountname;
+            this.Password = password;
+        }
+
+        #endregion
     }
 }
