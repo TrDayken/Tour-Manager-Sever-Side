@@ -144,7 +144,7 @@ namespace Tour_Manager_Sever_Side.DataBase
                     }
                     command.Prepare();
 
-                    command.ExecuteNonQuery();
+                   // command.ExecuteNonQuery();
                 }
 
                 data = command.ExecuteScalar();
@@ -153,6 +153,37 @@ namespace Tour_Manager_Sever_Side.DataBase
             }
             return data;
         }
+        public void ExecuteVoidQuery(string query, object[] parameter = null)
+        {
+            object data = 0;
 
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionSTR))
+            {
+                connection.Open();
+                NpgsqlCommand command = new NpgsqlCommand(query, connection);
+
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                    command.Prepare();
+
+                    command.ExecuteNonQuery();
+                }
+
+                //data = command.ExecuteScalar();
+
+                connection.Close();
+            }
+         
+        }
     }
 }

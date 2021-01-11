@@ -39,6 +39,18 @@ namespace Tour_Manager_Sever_Side.DataBase
             }
             return locations[0];
         }
-
+        public void updateLocation(int id, string name, string info)
+        {
+            DataProvider.Instance.ExecuteVoidQuery("UPDATE dia_diem SET ten_dia_diem = @ten , dac_diem = @dacdiem WHERE id_dia_diem = @id ;",
+              new object[] { name, info, id });
+        }
+        public void deteleLocation(int id)
+        {
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM dia_diem WHERE id_dia_diem = @id ;", new object[] { id });
+        }
+        public void insertLocation( string name, string info)
+        {
+            DataProvider.Instance.ExecuteVoidQuery("select add_location( @ten , @info );", new object[] { name, info });
+        }
     }
 }

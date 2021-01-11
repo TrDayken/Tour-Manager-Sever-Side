@@ -38,5 +38,6 @@ namespace Tour_Manager_Sever_Side.DataBase
             int id = (int)DataProvider.Instance.ExecuteScalar("select register( @tk , @mk )", new object[] { tk, mk });
             return id;
         }
+
     }
 }

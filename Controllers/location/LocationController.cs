@@ -57,7 +57,7 @@ namespace Tour_Manager_Sever_Side.Controllers
         [HttpPost]
         public void Post([FromBody]Location location)
         {
-            locations.Add(location); 
+            LocationData.Instance.insertLocation(location.LocationName, location.LocationInfo);
         }
 
         #endregion
@@ -67,11 +67,12 @@ namespace Tour_Manager_Sever_Side.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Location location)
         {
-            for (int i = 0; i < locations.Count; i++)
-            {
-                if (locations[i].LocationId == id)
-                    locations[i] = location;
-            }
+           LocationData.Instance.updateLocation(id, location.LocationName, location.LocationInfo);
+            //for (int i = 0; i < locations.Count; i++)
+            //{
+            //    if (locations[i].LocationId == id)
+            //        locations[i] = location;
+            //}
         }
         #endregion
 
@@ -80,11 +81,7 @@ namespace Tour_Manager_Sever_Side.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            for (int i = 0; i < locations.Count; i++)
-            {
-                if (locations[i].LocationId == id)
-                    locations.RemoveAt(i);
-            }
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM dia_diem WHERE id_dia_diem = @id ;", new object[] { id });
         }
         #endregion
 
