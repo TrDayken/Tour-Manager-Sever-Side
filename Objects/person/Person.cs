@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -83,6 +84,20 @@ namespace Tour_Manager_Sever_Side.Objects
             PhoneNumber = phone;
 
             AccountId = accountid; 
+        }
+        public Person(DataRow row)
+        {
+            PersonId = row["id_"].GetHashCode(); 
+
+            Name = row["ten"].ToString();
+
+            IdentificationCard = row["cmnd"].ToString();
+
+            Gender = Convert.ToBoolean(row["gio_tinh"]);
+
+            PhoneNumber = row["dien_thoai"].ToString();
+
+            AccountId = row["id_tai_khoan"].GetHashCode() ;
         }
 
         #endregion

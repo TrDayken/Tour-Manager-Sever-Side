@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -67,6 +68,14 @@ namespace Tour_Manager_Sever_Side.Objects
             AccountId = id;
             AccountName = accountname;
             AccountPassword = accountpassword; 
+        }
+        public Account(DataRow row)
+        {
+            AccountId = row["id_tai_khoan"].GetHashCode();
+            AccountName = row["ten_tai_khoan"].ToString();
+            AccountPassword = row["mat_khau"].ToString();
+
+
         }
 
         #endregion 
