@@ -43,7 +43,7 @@ namespace Tour_Manager_Sever_Side.DataBase
                     }
                     command.Prepare();
 
-                    command.ExecuteNonQuery();
+                   
                 }
 
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);
@@ -77,7 +77,7 @@ namespace Tour_Manager_Sever_Side.DataBase
                     }
                     command.Prepare();
 
-                    command.ExecuteNonQuery();
+                
                 }
 
                 data = command.ExecuteScalar();
@@ -110,7 +110,7 @@ namespace Tour_Manager_Sever_Side.DataBase
                     }
                     command.Prepare();
 
-                    command.ExecuteNonQuery();
+                    
                 }
 
                 NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);

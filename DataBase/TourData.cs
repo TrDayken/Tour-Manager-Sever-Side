@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Tour_Manager_Sever_Side.Objects;
 
 namespace Tour_Manager_Sever_Side.DataBase
 {
@@ -15,5 +17,17 @@ namespace Tour_Manager_Sever_Side.DataBase
             private set { TourData.instance = value; }
         }
         private TourData() { }
+
+        public List<Tour> GetAllTour()
+        {
+            List<Tour> Tours = new List<Tour>();
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Dia_Diem;");
+            foreach (DataRow item in data.Rows)
+            {
+                Tour Tour = new Tour(item);
+                Tours.Add(Tour);
+            }
+            return Tours;
+        }
     }
 }

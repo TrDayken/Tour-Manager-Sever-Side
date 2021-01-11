@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace Tour_Manager_Sever_Side.Objects
 {
@@ -67,6 +68,17 @@ namespace Tour_Manager_Sever_Side.Objects
             TourPrice = price;
 
             TourInfo = info;
+        }
+
+        public Tour(DataRow item)
+        {
+            IdTour = item["id_tour"].GetHashCode();
+
+            TourName = item["ten_tour"].ToString();
+
+            TourPrice = item["gia_tour"].GetHashCode();
+
+            TourInfo = item["noi_dung"].ToString();
         }
         #endregion 
     }
