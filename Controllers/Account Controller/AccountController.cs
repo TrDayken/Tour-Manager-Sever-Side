@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Tour_Manager_Sever_Side.DataBase;
+using Tour_Manager_Sever_Side.Model;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,6 +40,13 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         [HttpPost]
         public void Post([FromBody]string value)
         {
+        }
+
+
+        [HttpPost("login")]
+        public string Login([FromBody] UserCred cred)
+        {
+            return "id = " + AccountData.Instance.login(cred.UserName, cred.Password);
         }
 
         #endregion
