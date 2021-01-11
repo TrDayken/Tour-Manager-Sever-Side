@@ -84,14 +84,5 @@ namespace Tour_Manager_Sever_Side.Controllers
             DataProvider.Instance.ExecuteVoidQuery("DELETE FROM dia_diem WHERE id_dia_diem = @id ;", new object[] { id });
         }
         #endregion
-
-
-
-
-
-
-
-
-
     }
 }

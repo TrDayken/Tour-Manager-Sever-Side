@@ -15,13 +15,44 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #region Get method
 
+        // GET: api/crew
+
+/*        [HttpGet]
+        public IEnumerable<Crew> GetAllCrew()
+        {
+            //return 
+        }
+*/
+        // GET api/<controller>/5
+        [HttpGet("{id}")]
+        public string GetSpecificCrew(int id)
+        {
+            return "value";
+        }
+
         #endregion
 
         #region Post method
 
+        // POST api/<controller>
+        [HttpPost]
+        public void Post([FromBody]Crew body)
+        {
+            // create new crew;
+
+            //return 404 if already exists?
+        }
+
         #endregion
 
         #region Put method
+
+        // PUT api/<controller>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody]Crew body)
+        {
+            // udpate crew value to database 
+        }
 
         #endregion
 
@@ -29,31 +60,8 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #endregion
 
-        // GET: api/<controller>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/<controller>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/<controller>
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
