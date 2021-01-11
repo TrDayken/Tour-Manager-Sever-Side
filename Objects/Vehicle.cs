@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -63,7 +64,17 @@ namespace Tour_Manager_Sever_Side.Objects
 
             VehicleType = type; 
         }
+        public Vehicle(DataRow row)
+        {
+            VehicleId = row["id_phuong_tien"].GetHashCode();
 
-#endregion
+            VehicleName = row["ten_phuong_tien"].ToString();
+
+            VehicleSign = row["ban_so"].ToString();
+
+            VehicleType = row["loai_xe"].ToString();
+        }
+
+        #endregion
     }
 }

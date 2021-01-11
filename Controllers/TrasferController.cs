@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Tour_Manager_Sever_Side.Objects;
+using Tour_Manager_Sever_Side.Objects.person;
 using Tour_Manager_Sever_Side.DataBase;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,7 +12,7 @@ using Tour_Manager_Sever_Side.DataBase;
 namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 {
     [Route("api/[controller]")]
-    public class TrasferController : Controller
+    public class TransferController : Controller
     {
 
         #region Get method
@@ -32,34 +33,37 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Transfer> Get()
         {
-            return new string[] { "value1", "value2" };
+            return TransferData.Instance.GetAllTransfer();
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Transfer Get(int id)
         {
-            return "value";
+            return TransferData.Instance.GetTransfer(id);
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody] Transfer value)
         {
+            TransferData.Instance.insertTransfer(value);
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put([FromBody] Transfer value)
         {
+            TransferData.Instance.updateTransfer(value);
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            TransferData.Instance.deteleTransfer(id);
         }
     }
 }

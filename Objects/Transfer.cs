@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace Tour_Manager_Sever_Side.Objects.person
 
         private DateTime transferDate;
 
-        private float ammount;
+        private decimal ammount;
 
         private int accountId;
 #endregion
@@ -32,7 +33,7 @@ namespace Tour_Manager_Sever_Side.Objects.person
             set { this.transferDate = value; }
         }
 
-        public float Ammount
+        public decimal Ammount
         {
             get { return this.ammount; }
 
@@ -53,7 +54,7 @@ namespace Tour_Manager_Sever_Side.Objects.person
             
         }
 
-        public Transfer(int id, DateTime date, float ammount, int accountid)
+        public Transfer(int id, DateTime date, decimal ammount, int accountid)
         {
             idTransfer = id;
 
@@ -63,6 +64,17 @@ namespace Tour_Manager_Sever_Side.Objects.person
 
             AccountId = accountid; 
         }
-#endregion  
+
+        public Transfer(DataRow row)
+        {
+            idTransfer = row["id_giao_dich"].GetHashCode();
+
+            TransferDate = Convert.ToDateTime(row["ngay_giao_dich"]);
+
+            Ammount = row["so_tien"].GetHashCode();
+
+            AccountId = row["id_tai_khoan"].GetHashCode();
+        }
+        #endregion
     }
 }

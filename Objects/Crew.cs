@@ -108,9 +108,9 @@ namespace Tour_Manager_Sever_Side.Objects
         {
             CrewId = row["id_doan"].GetHashCode();
 
-            StartDate = Convert.ToDateTime(row["ngay_bat_dau"]);
+            StartDate = Convert.ToDateTime(row["ngay_bat_dau"]).Date;
 
-            EndDate = Convert.ToDateTime(row["ngay_ket_thuc"]);
+            EndDate = Convert.ToDateTime(row["ngay_ket_thuc"]).Date;
 
             Info = row["thong_tin"].ToString();
 

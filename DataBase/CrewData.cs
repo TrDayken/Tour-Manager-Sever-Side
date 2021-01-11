@@ -53,16 +53,16 @@ namespace Tour_Manager_Sever_Side.DataBase
             string where = "where id_doan = @id ; ";
             string query = update + info +date_start+ date_end + id_tour + where;
             DataProvider.Instance.ExecuteVoidQuery(query,
-                new object[] { crew.Info , crew.StartDate , crew.EndDate , crew.TourId , crew.CrewId });
+                new object[] { crew.Info , crew.StartDate.ToString("MM/dd/yyyy") , crew.EndDate.ToString("MM/dd/yyyy"), crew.TourId , crew.CrewId });
         }
         public void deteleCrew(int id)
         {
-            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM nguoi WHERE id_ = @id ;", new object[] { id });
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM doan WHERE id_ = @id ;", new object[] { id });
         }
         public void insertCrew(Crew crew)
         {
             DataProvider.Instance.ExecuteVoidQuery("select add_crew( @info , @ngay_bat_dau , @ngay_ket_thuc , @id_tour );",
-                new object[] { crew.Info, crew.StartDate, crew.EndDate, crew.TourId });
+                new object[] { crew.Info, crew.StartDate.ToString("MM/dd/yyyy"), crew.EndDate.ToString("MM/dd/yyyy"), crew.TourId });
         }
     }
 }
