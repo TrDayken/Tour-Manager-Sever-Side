@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,6 +17,10 @@ namespace Tour_Manager_Sever_Side.Objects
         private DateTime endDate;
 
         private string info;
+
+        private int tourId;
+
+
 
         #endregion
 
@@ -72,6 +77,19 @@ namespace Tour_Manager_Sever_Side.Objects
                 this.info = value;
             }
         }
+
+        public int TourId
+        {
+            get
+            {
+                return this.tourId;
+            }
+
+            set
+            {
+                this.tourId = value;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -85,6 +103,18 @@ namespace Tour_Manager_Sever_Side.Objects
             EndDate = end;
 
             Info = info; 
+        }
+        public Crew(DataRow row)
+        {
+            CrewId = row["id_doan"].GetHashCode();
+
+            StartDate = Convert.ToDateTime(row["ngay_bat_dau"]).Date;
+
+            EndDate = Convert.ToDateTime(row["ngay_ket_thuc"]).Date;
+
+            Info = row["thong_tin"].ToString();
+
+            tourId = row["id_tour"].GetHashCode();
         }
 
         #endregion

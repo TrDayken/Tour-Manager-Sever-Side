@@ -28,17 +28,17 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         //get all hotel
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<Hotel> GetAllHotel()
+        public IEnumerable<Hotel> Get()
         {
-            return hotels;
+            return HotelData.Instance.GetAllHotel();
         }
 
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public Hotel GetSpecificHotel(int id)
+        public Hotel Get(int id)
         {
-            return hotels[id];
+            return HotelData.Instance.GetHotel(id);
         }
         #endregion
 
@@ -46,18 +46,9 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]Hotel body)
+        public void Post([FromBody] Hotel value)
         {
-            for (int i = 0; i < hotels.Count(); i++)
-            {
-                if(hotels[i].HotelID == body.HotelID)
-                {
-                    hotels[i] = body;
-                    return;
-                }
-            }
-
-            hotels.Add(body);
+            HotelData.Instance.insertHotel(value);
         }
         #endregion
 
@@ -65,9 +56,10 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Hotel value)
-        { 
+        [HttpPut]
+        public void Put([FromBody] Hotel value)
+        {
+            HotelData.Instance.updateHotel(value);
         }
         #endregion
 
@@ -85,6 +77,7 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            HotelData.Instance.deteleHotel(id);
         }
     }
 }

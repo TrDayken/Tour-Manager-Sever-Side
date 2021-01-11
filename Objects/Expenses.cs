@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,11 +11,11 @@ namespace Tour_Manager_Sever_Side.Objects
         #region private field 
         private int expensesId;
 
-        private float hotelExpenses;
+        private decimal hotelExpenses;
 
-        private float vehicleExpenses;
+        private decimal vehicleExpenses;
 
-        private float otherExpenses;
+        private decimal otherExpenses;
 
         private int crewId;
 #endregion
@@ -29,21 +30,21 @@ namespace Tour_Manager_Sever_Side.Objects
 
         }
 
-        public float HotelExpenses
+        public decimal HotelExpenses
         {
             get { return this.hotelExpenses; }
 
             set { this.hotelExpenses = value; }
         }
 
-        public float VehicleExpenses
+        public decimal VehicleExpenses
         {
             get { return this.vehicleExpenses; }
 
             set { this.vehicleExpenses = value; }
         }
 
-        public float OtherExpenses
+        public decimal OtherExpenses
         {
             get { return this.otherExpenses; }
 
@@ -62,7 +63,7 @@ namespace Tour_Manager_Sever_Side.Objects
 
         public Expenses() { }
 
-        public Expenses(int id , float hotel, float vehicle, float other, int crewid)
+        public Expenses(int id , decimal hotel, decimal vehicle, decimal other, int crewid)
         {
             ExpensesId = id;
 
@@ -73,6 +74,19 @@ namespace Tour_Manager_Sever_Side.Objects
             OtherExpenses = other;
 
             CrewId = crewid; 
+        }
+
+        public Expenses(DataRow row)
+        {
+            ExpensesId = row["id_chi_phi"].GetHashCode();
+
+            VehicleExpenses = row["chi_phi_phuong_tien"].GetHashCode();
+
+            HotelExpenses = row["chi_phi_khach_san"].GetHashCode();
+
+            OtherExpenses = row["chi_phi_khac"].GetHashCode();
+
+            CrewId = row["id_doan"].GetHashCode();
         }
 
         #endregion 

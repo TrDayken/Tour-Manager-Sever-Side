@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,9 +13,7 @@ namespace Tour_Manager_Sever_Side.Objects
 
         private string hotelname;
 
-        private float hotelprice;
-
-        private string hoteladdress;
+        private decimal price;
 
         #endregion
 
@@ -78,12 +77,19 @@ namespace Tour_Manager_Sever_Side.Objects
         #region constructor and deconstructor
         Hotel() { }
 
-        public Hotel(int Id , string HotelName, float Price, string hoteladdress)
+        public Hotel(int Id , string HotelName, decimal Price)
         {
             this.hotelid = Id;
             this.hotelname = HotelName;
             this.hotelprice = Price;
             this.hoteladdress = hoteladdress;
+        }
+
+        public Hotel(DataRow row)
+        {
+            this.id = row["id_khach_san"].GetHashCode();
+            this.hotelname = row["ten_khach_san"].ToString();
+            this.price = row["gia_phong"].GetHashCode();
         }
 
         #endregion

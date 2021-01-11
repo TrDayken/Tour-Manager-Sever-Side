@@ -31,7 +31,7 @@ namespace Tour_Manager_Sever_Side.DataBase
         {
           
             List<Location> locations = new List<Location>();
-            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Dia_Diem where id_dia_diem = @id;", new object[] { id });
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from Dia_Diem where id_dia_diem = @id ;", new object[] { id });
             foreach (DataRow item in data.Rows)
             {
                 Location location = new Location(item);

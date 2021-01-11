@@ -32,34 +32,37 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         // GET: api/<controller>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Expenses> Get()
         {
-            return new string[] { "value1", "value2" };
+            return ExpensesData.Instance.GetAllExpenses();
         }
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Expenses Get(int id)
         {
-            return "value";
+            return ExpensesData.Instance.GetExpenses(id);
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Expenses value)
         {
+            ExpensesData.Instance.insertExpenses(value);
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put([FromBody]Expenses value)
         {
+            ExpensesData.Instance.updateExpenses(value);
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            ExpensesData.Instance.deteleExpenses(id);
         }
     }
 }
