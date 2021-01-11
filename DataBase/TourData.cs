@@ -33,7 +33,7 @@ namespace Tour_Manager_Sever_Side.DataBase
         {
 
             List<Tour> Tours = new List<Tour>();
-            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from tour where id_tour = @id;", new object[] { id });
+            DataTable data = DataProvider.Instance.ExecuteQuery("Select * from tour where id_tour = @id ;", new object[] { id });
             foreach (DataRow item in data.Rows)
             {
                 Tour Tour = new Tour(item);
