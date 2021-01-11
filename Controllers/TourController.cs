@@ -46,20 +46,23 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Tour tour)
         {
+            TourData.Instance.insertTour(tour);
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put( [FromBody]Tour value)
         {
+            TourData.Instance.updateTour(value);
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            TourData.Instance.deteleTour(id);
         }
     }
 }

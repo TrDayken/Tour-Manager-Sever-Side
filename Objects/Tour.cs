@@ -14,7 +14,7 @@ namespace Tour_Manager_Sever_Side.Objects
 
         private string tourname;
 
-        private double tourprice;
+        private decimal tourprice;
 
         private string tourinfo;
 
@@ -41,7 +41,7 @@ namespace Tour_Manager_Sever_Side.Objects
             set { this.tourname = value; }
         }
 
-        public double TourPrice
+        public decimal TourPrice
         {
             get { return tourprice; }
 
@@ -59,7 +59,7 @@ namespace Tour_Manager_Sever_Side.Objects
 
         #region constructor
 
-        public Tour (int id, string name , float price, string info)
+        public Tour (int id, string name , decimal price, string info)
         {
             IdTour = id;
 
@@ -69,6 +69,8 @@ namespace Tour_Manager_Sever_Side.Objects
 
             TourInfo = info;
         }
+
+        public Tour() { }
 
         public Tour(DataRow item)
         {
