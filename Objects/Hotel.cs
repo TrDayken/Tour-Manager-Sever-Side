@@ -45,20 +45,20 @@ namespace Tour_Manager_Sever_Side.Objects
             }
         }
 
-        public float HotelPrice
+        public decimal HotelPrice
         {
             get
             {
-                return hotelprice; 
+                return price; 
             }
 
             set
             {
-                this.hotelprice = value; 
+                this.price = value; 
             }
         }
 
-        public string HotelAdress
+/*        public string HotelAdress
         {
             get
             {
@@ -69,7 +69,7 @@ namespace Tour_Manager_Sever_Side.Objects
             {
                 this.hoteladdress = value; 
             }
-        }
+        }*/
 
         public 
         #endregion
@@ -81,13 +81,13 @@ namespace Tour_Manager_Sever_Side.Objects
         {
             this.hotelid = Id;
             this.hotelname = HotelName;
-            this.hotelprice = Price;
-            this.hoteladdress = hoteladdress;
+            this.price = Price;
+/*            this.hoteladdress = hoteladdress;*/
         }
 
         public Hotel(DataRow row)
         {
-            this.id = row["id_khach_san"].GetHashCode();
+            this.hotelid = row["id_khach_san"].GetHashCode();
             this.hotelname = row["ten_khach_san"].ToString();
             this.price = row["gia_phong"].GetHashCode();
         }

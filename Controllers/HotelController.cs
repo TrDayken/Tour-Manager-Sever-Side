@@ -16,9 +16,9 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         private static List<Hotel> hotels = new List<Hotel>
         {
-            new Hotel(1, "dai dong phu", 200, "48 bui thi xuan"),
+/*            new Hotel(1, "dai dong phu", 200, "48 bui thi xuan"),
             new Hotel(2, "dau cung duoc",400 , "whereever you go"),
-            new Hotel(3, "Paradis" ,500, "big duck"),
+            new Hotel(3, "Paradis" ,500, "big duck"),*/
         };
 
         #endregion
