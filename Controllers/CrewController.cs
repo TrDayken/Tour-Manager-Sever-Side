@@ -23,7 +23,7 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             return CrewData.Instance.GetAllCrew();
         }
-*/
+
         // GET api/<controller>/5
         [HttpGet("{id}")]
         public Crew Get(int id)

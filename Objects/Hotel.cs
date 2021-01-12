@@ -13,7 +13,9 @@ namespace Tour_Manager_Sever_Side.Objects
 
         private string hotelname;
 
-        private decimal price;
+        private decimal hotelprice;
+
+        private string hoteladdress;
 
         #endregion
 
@@ -49,16 +51,16 @@ namespace Tour_Manager_Sever_Side.Objects
         {
             get
             {
-                return price; 
+                return hotelprice; 
             }
 
             set
             {
-                this.price = value; 
+                this.hotelprice = value; 
             }
         }
 
-/*        public string HotelAdress
+        public string HotelAdress
         {
             get
             {
@@ -67,9 +69,9 @@ namespace Tour_Manager_Sever_Side.Objects
 
             set
             {
-                this.hoteladdress = value; 
+                this.hoteladdress = value;
             }
-        }*/
+        }
 
         public 
         #endregion
@@ -77,19 +79,20 @@ namespace Tour_Manager_Sever_Side.Objects
         #region constructor and deconstructor
         Hotel() { }
 
-        public Hotel(int Id , string HotelName, decimal Price)
+        public Hotel(int Id , string HotelName , string HotelAddress, decimal Price)
         {
             this.hotelid = Id;
             this.hotelname = HotelName;
-            this.price = Price;
-/*            this.hoteladdress = hoteladdress;*/
+            this.hotelprice = Price;
+            this.hoteladdress = hoteladdress;
         }
 
         public Hotel(DataRow row)
         {
             this.hotelid = row["id_khach_san"].GetHashCode();
             this.hotelname = row["ten_khach_san"].ToString();
-            this.price = row["gia_phong"].GetHashCode();
+            this.hotelprice = row["gia_phong"].GetHashCode();
+            this.hoteladdress = row["dia_chi"].ToString();
         }
 
         #endregion
