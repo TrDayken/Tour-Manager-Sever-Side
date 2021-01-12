@@ -51,7 +51,7 @@ namespace Tour_Manager_Sever_Side.DataBase
             string where = "where id_khach_san = @id ; ";
             string query = update + hotelname + price + where;
             DataProvider.Instance.ExecuteVoidQuery(query,
-                new object[] { Hotel.HotelName, Hotel.Price, Hotel.ID });
+                new object[] { Hotel.HotelName, Hotel.HotelPrice, Hotel.HotelID });
         }
         public void deteleHotel(int id)
         {
@@ -60,7 +60,7 @@ namespace Tour_Manager_Sever_Side.DataBase
         public void insertHotel(Hotel Hotel)
         {
             DataProvider.Instance.ExecuteVoidQuery("select add_hotel( @ten_khach_san , @gia_phong );",
-                new object[] { Hotel.HotelName, Hotel.Price });
+                new object[] { Hotel.HotelName, Hotel.HotelPrice });
         }
     }
 }
