@@ -60,7 +60,7 @@ namespace Tour_Manager_Sever_Side.Objects
             }
         }
 
-        public string HotelAdress
+        public string HotelAddress
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Tour_Manager_Sever_Side.Objects
             this.hotelid = Id;
             this.hotelname = HotelName;
             this.hotelprice = Price;
-            this.hoteladdress = hoteladdress;
+            this.hoteladdress = HotelAddress;
         }
 
         public Hotel(DataRow row)
