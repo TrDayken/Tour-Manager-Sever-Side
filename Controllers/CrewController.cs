@@ -42,6 +42,11 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             return CrewData.Instance.GetVehiclebyCrewID(id);
         }
+        [HttpGet("{id}/person")]
+        public IEnumerable<Person> GetPerson(int id)
+        {
+            return CrewData.Instance.GetPersonbyCrewID(id);
+        }
         #endregion
 
         #region Post method
@@ -64,6 +69,11 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             return CrewData.Instance.add_VehicletoCrew(id1, id2);
         }
 
+        [HttpPost("{id1}/person/{id2}")]
+        public int PostPerson(int id1, int id2)
+        {
+            return CrewData.Instance.add_PersontoCrew(id1, id2);
+        }
 
 
         #endregion
@@ -100,6 +110,11 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             CrewData.Instance.delete_VehicletoCrew(id1, id2);
         }
 
+        [HttpDelete("{id1}/person/{id2}")]
+        public void DeletePerson(int id1, int id2)
+        {
+            CrewData.Instance.delete_PersontoCrew(id1, id2);
+        }
         #endregion
 
 

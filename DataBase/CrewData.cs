@@ -118,5 +118,31 @@ namespace Tour_Manager_Sever_Side.DataBase
             DataProvider.Instance.ExecuteVoidQuery("DELETE FROM chi_tiet_phuong_tien where id_doan = @id_crew and id_phuong_tien =  @id_vehicle ;",
                new object[] { idCrew, idVehicle });
         }
+        public List<Person> GetPersonbyCrewID(int id)
+        {
+            List<Person> Persons = new List<Person>();
+            string select = "select nguoi.*  ";
+            string from = "from nguoi, chi_tiet_doan ";
+            string where = "where chi_tiet_doan.id_doan = @id and chi_tiet_doan.id_nguoi = nguoi.id_; ";
+            string query = select + from + where;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                Person Person = new Person(item);
+                Persons.Add(Person);
+            }
+            return Persons;
+        }
+
+        public int add_PersontoCrew(int idCrew, int idPerson)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("select add_person_to_crew( @id_crew , @id_person );",
+                new object[] { idCrew, idPerson });
+        }
+        public void delete_PersontoCrew(int idCrew, int idPerson)
+        {
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM chi_tiet_doan where id_doan = @id_crew and id_nguoi =  @id_person ;",
+               new object[] { idCrew, idPerson });
+        }
     }
 }

@@ -72,7 +72,7 @@ namespace Tour_Manager_Sever_Side.DataBase
 
         public int add_LocationtoTour(int idTour, int idLocation)
         {
-            return (int)DataProvider.Instance.ExecuteScalar("select add_dia_diem_to_tour( @id_tour , @id_location );",
+            return (int)DataProvider.Instance.ExecuteScalar("select add_location_to_tour( @id_tour , @id_location );",
                 new object[] { idTour, idLocation });
         }
         public void delete_LocationtoTour(int idTour, int idLocation)
