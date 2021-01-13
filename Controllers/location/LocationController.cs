@@ -49,6 +49,12 @@ namespace Tour_Manager_Sever_Side.Controllers
             return LocationData.Instance.GetLocation( id);
         }
 
+        [HttpGet("{id}/tour")]
+        public IEnumerable<Tour> GetLocation(int id)
+        {
+            return LocationData.Instance.GetTourbyLocationID(id);
+        }
+
         #endregion
 
         #region Post method
