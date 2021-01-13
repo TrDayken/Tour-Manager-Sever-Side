@@ -40,6 +40,13 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             return HotelData.Instance.GetHotel(id);
         }
+
+        // GET api/hotel/id/crew
+        [HttpGet("{id}/crew")]
+        public IEnumerable<Crew> GetCrew(int id)
+        {
+            return HotelData.Instance.GetCrewbyHotelID(id);
+        }
         #endregion
 
         #region Post method
@@ -79,5 +86,7 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             HotelData.Instance.deteleHotel(id);
         }
+
+
     }
 }

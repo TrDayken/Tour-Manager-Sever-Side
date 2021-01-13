@@ -64,5 +64,59 @@ namespace Tour_Manager_Sever_Side.DataBase
             DataProvider.Instance.ExecuteVoidQuery("select add_crew( @info , @ngay_bat_dau , @ngay_ket_thuc , @id_tour );",
                 new object[] { crew.Info, crew.StartDate.ToString("MM/dd/yyyy"), crew.EndDate.ToString("MM/dd/yyyy"), crew.TourId });
         }
+
+        public List<Hotel> GetHotelbyCrewID(int id)
+        {
+            List<Hotel> hotels = new List<Hotel>();
+            string select = "select khach_san.*  ";
+            string from = "from khach_san, chi_tiet_khach_san ";
+            string where = "where chi_tiet_khach_san.id_doan = @id and chi_tiet_khach_san.id_khach_san = khach_san.id_khach_san; ";
+            string query = select + from + where;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                Hotel hotel = new Hotel(item);
+                hotels.Add(hotel);
+            }
+            return hotels;
+        }
+
+        public int add_HoteltoCrew(int idHotel, int idCrew)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("select add_hotel_to_crew( @id_hotel , @id_crew );",
+                new object[] { idHotel, idCrew });
+        }
+        public void delete_HoteltoCrew(int idHotel, int idCrew )
+        {
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM chi_tiet_khach_san where id_doan = @id_crew and id_khach_san =  @id_hotel ;",
+               new object[] { idCrew, idHotel });
+        }
+
+        public List<Vehicle> GetVehiclebyCrewID(int id)
+        {
+            List<Vehicle> Vehicles = new List<Vehicle>();
+            string select = "select phuong_tien.*  ";
+            string from = "from phuong_tien, chi_tiet_phuong_tien ";
+            string where = "where chi_tiet_phuong_tien.id_doan = @id and chi_tiet_phuong_tien.id_phuong_tien = phuong_tien.id_phuong_tien; ";
+            string query = select + from + where;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                Vehicle Vehicle = new Vehicle(item);
+                Vehicles.Add(Vehicle);
+            }
+            return Vehicles;
+        }
+
+        public int add_VehicletoCrew(int idCrew ,int idVehicle )
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("select add_vehicle_to_crew( @id_vehicle , @id_crew );",
+                new object[] { idVehicle, idCrew });
+        }
+        public void delete_VehicletoCrew(int idCrew, int idVehicle)
+        {
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM chi_tiet_phuong_tien where id_doan = @id_crew and id_phuong_tien =  @id_vehicle ;",
+               new object[] { idCrew, idVehicle });
+        }
     }
 }

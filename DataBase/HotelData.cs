@@ -62,5 +62,20 @@ namespace Tour_Manager_Sever_Side.DataBase
             DataProvider.Instance.ExecuteVoidQuery("select add_hotel( @ten_khach_san , @gia_phong );",
                 new object[] { Hotel.HotelName, Hotel.HotelPrice });
         }
+        public List<Crew> GetCrewbyHotelID(int id)
+        {
+            List<Crew> crews = new List<Crew>();
+            string select = "select doan.* ";
+            string from = "from doan, chi_tiet_khach_san ";
+            string where = "where chi_tiet_khach_san.id_khach_san = @id and chi_tiet_khach_san.id_doan = doan.id_doan; ";
+            string query = select + from + where;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                Crew crew = new Crew(item);
+                crews.Add(crew);
+            }
+            return crews;
+        }
     }
 }

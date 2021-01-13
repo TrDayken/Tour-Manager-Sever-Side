@@ -54,6 +54,31 @@ namespace Tour_Manager_Sever_Side.DataBase
         {
             DataProvider.Instance.ExecuteVoidQuery("select add_tour( @ten , @price , @info );", new object[] { tour.TourName, tour.TourPrice, tour.TourInfo });
         }
+        public List<Location> GetLocationbyTourID(int id)
+        {
+            List<Location> Locations = new List<Location>();
+            string select = "select dia_diem.*  ";
+            string from = "from dia_diem, chi_tiet_tour ";
+            string where = "where chi_tiet_tour.id_tour = @id and chi_tiet_tour.id_dia_diem = dia_diem.id_dia_diem; ";
+            string query = select + from + where;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                Location Location = new Location(item);
+                Locations.Add(Location);
+            }
+            return Locations;
+        }
 
+        public int add_LocationtoTour(int idTour, int idLocation)
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("select add_dia_diem_to_tour( @id_tour , @id_location );",
+                new object[] { idTour, idLocation });
+        }
+        public void delete_LocationtoTour(int idTour, int idLocation)
+        {
+            DataProvider.Instance.ExecuteVoidQuery("DELETE FROM chi_tiet_tour where id_tour = @id_Tour and id_dia_diem =  @id_Location ;",
+               new object[] { idTour, idLocation });
+        }
     }
 }

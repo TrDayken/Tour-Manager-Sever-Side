@@ -23,6 +23,18 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
             return TourData.Instance.GetAllTour();
         }
 
+        [HttpGet("{id}")]
+        public Tour Get(int id)
+        {
+            return TourData.Instance.GetTour(id);
+        }
+
+
+        [HttpGet("{id}/location")]
+        public IEnumerable<Location> GetLocation(int id)
+        {
+            return TourData.Instance.GetLocationbyTourID(id);
+        }
         #endregion
 
         #region Post method
@@ -33,7 +45,11 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             TourData.Instance.insertTour(tour);
         }
-
+        [HttpPost("{id1}/location/{id2}")]
+        public int PostLocation(int id1, int id2)
+        {
+            return TourData.Instance.add_LocationtoTour(id1, id2);
+        }
         #endregion
 
         #region Put method
@@ -56,6 +72,13 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         {
             TourData.Instance.deteleTour(id);
         }
+
+        [HttpDelete("{id1}/location/{id2}")]
+        public void DeleteLocation(int id1, int id2)
+        {
+            TourData.Instance.delete_LocationtoTour(id1, id2);
+        }
+
 
         #endregion
 

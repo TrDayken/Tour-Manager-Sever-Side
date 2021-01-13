@@ -44,9 +44,9 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
 
         [HttpPost("login")]
-        public string Login([FromBody] UserCred cred)
+        public int Login([FromBody] UserCred cred)
         {
-            return "id = " + AccountData.Instance.login(cred.UserName, cred.Password);
+            return AccountData.Instance.login(cred.UserName, cred.Password);
         }
 
         #endregion
