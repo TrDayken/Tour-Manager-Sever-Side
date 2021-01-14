@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Tour_Manager_Sever_Side.DataBase;
 using Tour_Manager_Sever_Side.Model;
+using Tour_Manager_Sever_Side.Objects.person;
+using Tour_Manager_Sever_Side.Objects;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,10 +29,17 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         // GET api/<controller>/5
         [HttpGet("{id}", Name = "Get_specific_account")]
-        public string Get(int id)
+        public int Get(int id)
         {
             //return "id = " + id ;
-            return "id = " + AccountData.Instance.login("1", "1");
+            return  AccountData.Instance.login("1", "1");
+        }
+
+        [HttpGet("{id}/person")]
+        public Person GetPerson(int id)
+        {
+            //return "id = " + id ;
+            return AccountData.Instance.GetPersonByIDAccount(id);
         }
 
         #endregion

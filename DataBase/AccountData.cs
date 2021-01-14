@@ -42,5 +42,20 @@ namespace Tour_Manager_Sever_Side.DataBase
         {
             DataProvider.Instance.ExecuteVoidQuery("select update_account( @tk , @mk , @new_mk );", new object[] { tk, mk, new_mk }); 
         }
+        public Person GetPersonByIDAccount(int id)
+        {
+            List<Person> Persons = new List<Person>();
+            string select = "select nguoi.*  ";
+            string from = "from nguoi ";
+            string where = "where id_tai_khoan = @id ;";
+            string query = select + from + where;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
+            foreach (DataRow item in data.Rows)
+            {
+                Person Person = new Person(item);
+                Persons.Add(Person);
+            }
+            return Persons[0];
+        }
     }
 }
