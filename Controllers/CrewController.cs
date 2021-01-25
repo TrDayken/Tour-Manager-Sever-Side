@@ -117,9 +117,5 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         }
         #endregion
 
-
-
-
-
     }
 }

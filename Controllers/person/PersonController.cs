@@ -64,7 +64,7 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         }
 
         // PUT api/<controller>/5
-        [HttpPut]
+        [HttpPut("{id}")]
         public void Put([FromBody]Person value)
         {
             PersonData.Instance.updatePerson(value);

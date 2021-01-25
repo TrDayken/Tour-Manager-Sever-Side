@@ -72,20 +72,20 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
 
         #region Delete method
 
-        #endregion
-
-
-
-
-
-
-
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
             HotelData.Instance.deteleHotel(id);
         }
+
+
+        #endregion
+
+
+
+
+
 
 
     }
