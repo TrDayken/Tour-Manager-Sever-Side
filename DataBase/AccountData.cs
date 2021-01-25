@@ -38,9 +38,9 @@ namespace Tour_Manager_Sever_Side.DataBase
             int id = (int)DataProvider.Instance.ExecuteScalar("select register( @tk , @mk )", new object[] { tk, mk });
             return id;
         }
-        public void update(string tk, string mk, string new_mk)
+        public int  update(string tk, string mk, string new_mk)
         {
-            DataProvider.Instance.ExecuteVoidQuery("select update_account( @tk , @mk , @new_mk );", new object[] { tk, mk, new_mk }); 
+            return (int)DataProvider.Instance.ExecuteScalar("select update_account( @tk , @mk , @new_mk );", new object[] { tk, mk, new_mk }); 
         }
         public Person GetPersonByIDAccount(int id)
         {

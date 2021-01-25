@@ -69,7 +69,10 @@ namespace Tour_Manager_Sever_Side.Objects
         #endregion
 
         #region constructor
-        public Person() { }
+        public Person() 
+        {
+
+        }
 
         public Person(int id, string name, string card, bool gender, string phone, int accountid)
         {

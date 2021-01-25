@@ -49,6 +49,7 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         [HttpPost]
         public void Post([FromBody]string value)
         {
+
         }
 
 
@@ -56,6 +57,29 @@ namespace Tour_Manager_Sever_Side.Controllers.Account_Controller
         public int Login([FromBody] UserCred cred)
         {
             return AccountData.Instance.login(cred.UserName, cred.Password);
+        }
+
+
+
+        [HttpPost("register")]
+        public int Register([FromBody] UserCred cred)
+        {
+            int idtk = AccountData.Instance.register(cred.UserName, cred.Password); ;
+            if(idtk >=0)
+            {
+                Person person = new Person(0,"name","123456789",true,"012345678",idtk);
+                PersonData.Instance.insertPerson(person);
+            }
+            return idtk;
+        }
+
+        [HttpPost("update")]
+        public int  Update([FromBody] List<UserCred> cred)
+        {
+            // -1 tk hoac mk ko dung
+            // 1 update thanh cong
+            return AccountData.Instance.update(cred[0].UserName, cred[0].Password, cred[0].Password);
+
         }
 
         #endregion
