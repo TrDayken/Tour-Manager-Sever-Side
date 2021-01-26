@@ -19,7 +19,7 @@ namespace Tour_Manager_Sever_Side.DataBase
         }
         private DataProvider() { }
 
-        private string connectionSTR =string.Format("Server=localhost;Port=5432;User Id=postgres;Password=2000;Database=quanlydulich;");
+        private string connectionSTR =string.Format("Server=ec2-3-208-168-0.compute-1.amazonaws.com;Port=5432;User Id=vgcvxlntnyswvl;Password=eb13c1aa2c1c097713d5d57edae2eea31669b603cbddcec944fbbfe86573b534;Database=dd66c0poj6fdq5;Pooling=true;SslMode=Require;Trust Server Certificate=true;");
         public DataTable ExecuteQuery(string query, object[] parameter = null)
         {
             DataTable data = new DataTable();
